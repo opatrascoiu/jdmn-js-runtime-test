@@ -20,9 +20,9 @@ const parser = function (input) {
 }
 
 export function inputEntry(input) {
-    parser(input).unaryTestsRoot;
+    parser(input).unaryTestsRoot();
 }
 
 export function outputEntry(input) {
-    parser(input).expressionRoot;
+    parser(input).expressionRoot();
 }

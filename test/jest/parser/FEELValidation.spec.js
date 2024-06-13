@@ -1,10 +1,10 @@
 import antlr4 from 'antlr4';
-import { FEELLexer, ThrowErrorAndFailListener } from 'jdmn-js-runtime'
+import { FEELLexer, FEELParser, ThrowErrorAndFailListener } from 'jdmn-js-runtime';
 
 import { inputEntry, outputEntry } from "../../../web/FEELValidation.js";
 
 // lexer
-function nextToken(input) {
+function returnToken(input) {
     // Make lexer
     const chars = new antlr4.InputStream(input);
     const feelLexer = new FEELLexer(chars);
@@ -17,9 +17,9 @@ function nextToken(input) {
 
 function validateToken(input, type, text, message) {
     if (message) {
-        expect(nextToken(input)).toThrow(new Error(message));
+        expect(returnToken(input)).toThrow(new Error(message));
     } else {
-        const token = nextToken(input);
+        const token = returnToken(input);
         expect(token.type).toBe(type);
         expect(token.text).toBe(text);
     }
